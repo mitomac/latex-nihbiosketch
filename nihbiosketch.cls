@@ -74,7 +74,9 @@
 \newcommand{\pgline}{\noindent\makebox[\linewidth]{\rule{\textwidth}{0.5pt}}\newline}
 
 \newcommand{\piinfo}
-{\pgline
+%\footnotesize \rightline{OMB No. 0925-0001 and 0925-0002 (Rev. 10/2021 Approved Through 09/30/2024)
+{{\footnotesize \rightline{OMB No. 0925-0001 and 0925-0002 (Rev. 10/2021 Approved Through 09/30/2024)}}
+\pgline
 {\centering
 \textbf{BIOGRAPHICAL SKETCH}\\
 {\footnotesize
