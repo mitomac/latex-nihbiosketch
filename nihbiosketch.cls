@@ -14,6 +14,7 @@
 % The Current Maintainer of this work is Paul M. Magwene
 %
 % This work consists of the files nihbiosketch.cls
+% Modified table to three columns and expiration date through 2026
 
 
 \NeedsTeXFormat{LaTeX2e}
@@ -75,7 +76,7 @@
 
 \newcommand{\piinfo}
 %\footnotesize \rightline{OMB No. 0925-0001 and 0925-0002 (Rev. 10/2021 Approved Through 09/30/2024)
-{{\footnotesize \rightline{OMB No. 0925-0001 and 0925-0002 (Rev. 10/2021 Approved Through 09/30/2024)}}
+{{\footnotesize \rightline{OMB No. 0925-0001 and 0925-0002 (Rev. 10/2021 Approved Through 01/31/2026)}}
 \pgline
 {\centering
 \textbf{BIOGRAPHICAL SKETCH}\\
@@ -100,13 +101,14 @@ EDUCATION/TRAINING (\textit{Begin with baccalaureate or other initial profession
 \newenvironment{education}
 {\bgroup\centering
 \tabulinesep=1.5mm
-\begin{tabu} to \textwidth {X[3.73,l,m]|X[1,c,m]|X[1,c,m]|X[1.8,l,m]}
+\begin{tabu} to \textwidth {X[3.748,l,m]|X[2.125,c,m]|X[1,c,m]|X[1.689,l,m]}
 \hline
-\rowfont[c]{}               
-INSTITUTION AND LOCATION & 
-DEGREE \newline (\textit{if applicable}) & 
-Completion Date MM/YYYY & 
-FIELD OF STUDY\\
+\rowfont[c]{}
+INSTITUTION AND LOCATION &
+DEGREE \newline (\textit{if applicable}) &
+%% Start Date MM/YYYY &
+Completion Date MM/YYYY &
+FIELD OF STUDY \\
 \hline}
 {\end{tabu}\egroup}
 
