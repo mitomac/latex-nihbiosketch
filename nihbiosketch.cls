@@ -122,9 +122,12 @@ FIELD OF STUDY \\
 \begin{longtabu} to 7.5in{X[1,l]X[6.5,l,p]}}
 {\end{longtabu}}
 
-\newenvironment{statement}
-{\setlength\parindent{2em}}
-{\setlength\parindent{0pt}}
+\newenvironment{statement}{
+%{\setlength\parindent{2em}}
+\setlength\parindent{0pt}%
+\setlength\parskip{2mm}
+}
+
 
 \newenvironment{performance}
 {\bgroup\centering
