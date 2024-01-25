@@ -10,3 +10,5 @@ jobs:
           run: |
             pwd
             ls
+            for %i in (statement/*.tex) do echo $i; xualatex -jobname=%i build_all_biosketches.tex
+
