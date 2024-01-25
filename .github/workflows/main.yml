@@ -3,8 +3,10 @@ jobs:
   build_latex:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: xu-cheng/texlive-action@v2
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: latex
+        uses: xu-cheng/texlive-action@v2
         with:
           scheme: full
           run: |
@@ -16,5 +18,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: 'Biosketchs'
-          path: *.pdf
+          path: ./*.pdf
             
