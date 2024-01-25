@@ -9,6 +9,8 @@ jobs:
           scheme: full
           run: |
             apk add msttcorefonts-installer
+            update-ms-fonts
+            fc-cache -f
             for i in statement/*.tex; do echo $i; lualatex -jobname=$i build_all_biosketches.tex; done
 
 
