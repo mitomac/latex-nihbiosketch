@@ -15,7 +15,7 @@ jobs:
             fc-cache -f
             for i in statement/*.tex; do filename=$(basename "$i" .tex); lualatex -jobname="$filename" build_all_biosketches; done
       - name: Upload PDF file
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: 'Biosketchs'
           path: ./*.pdf
