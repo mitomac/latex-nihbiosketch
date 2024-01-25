@@ -12,7 +12,7 @@ jobs:
             update-ms-fonts
             fc-cache -f
             for i in statement/*.tex; do echo $i; lualatex -jobname=$i build_all_biosketches.tex; done
-      name: Upload PDF file
+      - name: Upload PDF file
         uses: actions/upload-artifact@v3
         with:
           name: 'Biosketchs'
