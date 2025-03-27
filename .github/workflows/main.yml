@@ -1,11 +1,19 @@
+name: Build and Release Biosketches
+
 on: [push]
+
 jobs:
   build_latex:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v4
-      - name: latex
+      
+      - name: Get current date
+        id: date
+        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+      
+      - name: Compile LaTeX
         uses: xu-cheng/texlive-action@v2
         with:
           scheme: full
@@ -14,9 +22,21 @@ jobs:
             update-ms-fonts
             fc-cache -f
             for i in statement/*.tex; do filename=$(basename "$i" .tex); lualatex -jobname="$filename" build_all_biosketches; done
-      - name: Upload PDF file
+      
+      - name: Upload PDF file as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: 'Biosketchs'
+          name: 'Biosketches'
           path: ./*.pdf
-            
+      
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ./*.pdf
+          name: Biosketch Release ${{ steps.date.outputs.date }}
+          tag_name: release-${{ steps.date.outputs.date }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
