@@ -21,19 +21,29 @@ jobs:
             apk add msttcorefonts-installer
             update-ms-fonts
             fc-cache -f
-            for i in statement/*.tex; do filename=$(basename "$i" .tex); lualatex -jobname="$filename" build_all_biosketches; done
+            for i in statement/*.tex; do 
+              filename=$(basename "$i" .tex)
+              lualatex -jobname="$filename" build_all_biosketches
+            done
+      
+      - name: Rename PDFs with prefix
+        run: |
+          mkdir -p release_pdfs
+          for pdf in *.pdf; do
+            cp "$pdf" "release_pdfs/macalpine_$pdf"
+          done
       
       - name: Upload PDF file as artifact
         uses: actions/upload-artifact@v4
         with:
           name: 'Biosketches'
-          path: ./*.pdf
+          path: ./release_pdfs/*.pdf
       
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          files: ./*.pdf
+          files: ./release_pdfs/*.pdf
           name: Biosketch Release ${{ steps.date.outputs.date }}
           tag_name: release-${{ steps.date.outputs.date }}
           draft: false
